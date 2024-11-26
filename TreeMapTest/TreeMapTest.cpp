@@ -10,30 +10,43 @@ namespace TreeMapTest
 	{
 	public:
 		
-		TEST_METHOD(Aaaaaaaaaaaaa)
+		TEST_METHOD(TestNodesEqaul)
 		{
 			TreemapNode<int, int> node1(1, 1);
-			TreemapNode<int, int> node2(2, 1);
+			TreemapNode<int, int> node2(1, 0);
+			Assert::AreEqual(1, node1.getKey());
+			Assert::AreEqual(1, node2.getKey());
 			Assert::IsTrue((node1 == node2));
 		}
+
+		TEST_METHOD(TestNodesGreater)
+		{
+			TreemapNode<int, int> node1(2, 1);
+			TreemapNode<int, int> node2(1, 0);
+			Assert::AreEqual(2, node1.getKey());
+			Assert::AreEqual(1, node2.getKey());
+			Assert::IsTrue((node1 > node2));
+		}
+
+		TEST_METHOD(TestNodesLess)
+		{
+			TreemapNode<int, int> node1(1, 1);
+			TreemapNode<int, int> node2(2, 0);
+			Assert::AreEqual(1, node1.getKey());
+			Assert::AreEqual(2, node2.getKey());
+			Assert::IsTrue((node1 < node2));
+		}
+
 		
 		TEST_METHOD(TestPutEmpty)
 		{
 			TreeMap<int, int> map;
-			map.put(1, 1);
+			map.put(1, 5);
 
-			int expected = 1;
-			int actual = map.get(expected);
+			int expected = 5;
+			int actual = map.get(1);
 			Assert::AreEqual(1, map.size());
 			Assert::AreEqual(expected, actual);
-		}
-
-		TEST_METHOD(aAAAAaaaaaa)
-		{
-			BinaryTree<int> tree;
-			int x = 1;
-			tree.add(x);
-			Assert::AreEqual(1, tree.get(x));
 		}
 	};
 }

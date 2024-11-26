@@ -19,19 +19,20 @@ public:
 };
 
 template <class K, class V>
-TreemapNode<K, V>::TreemapNode<K, V>(){}
+TreemapNode<K, V>::TreemapNode<K, V>() { this->key = K(); this->value = V(); }
 
 template <class K, class V>
 TreemapNode<K, V>::TreemapNode<K, V>(K key)
 {
-	key = key;
+	this->key = key;
+	this->value = V();
 }
 
 template <class K, class V>
 TreemapNode<K, V>::TreemapNode<K, V>(K key, V value)
 {
-	key = key;
-	value = value;
+	this->key = key;
+	this->value = value;
 }
 
 template <class K, class V>
@@ -43,17 +44,17 @@ V TreemapNode<K, V>::getValue() { return value; }
 template <class K, class V>
 bool TreemapNode<K, V>::operator<(TreemapNode<K, V>& right)
 {
-	return right.getKey();
+	return getKey() < right.getKey();
 }
 
 template <class K, class V>
 bool TreemapNode<K, V>::operator>(TreemapNode<K, V>& right)
 {
-	return right.getKey();
+	return getKey() > right.getKey();
 }
 
 template <class K, class V>
 bool TreemapNode<K, V>::operator==(TreemapNode<K, V>& right)
 {
-	return key == right.getKey();
+	return getKey() == right.getKey();
 }
