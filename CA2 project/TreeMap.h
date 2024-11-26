@@ -32,22 +32,42 @@ void TreeMap<K, V>::clear()
 template <class K, class V>
 bool TreeMap<K, V>::containsKey(K key)
 {
-	return false;
+	TreemapNode<K, V> node(key);
+	try
+	{
+		tree.get(node);
+		return true;
+	}
+	catch (exception e) 
+	{
+		return false;
+	}
 }
 
 template <class K, class V>
 V TreeMap<K, V>::get(K key)
 {
 	TreemapNode<K, V> node(key);
-	TreemapNode<K, V> retnode = tree.get(node);
-	V ret = retnode.getValue();
-	return ret;
+	try
+	{
+		TreemapNode<K, V> retnode = tree.get(node);
+		return retnode.getValue();
+	}
+	catch (exception e) {}
+	return V();
 }
 
 template <class K, class V>
 BinaryTree<K> TreeMap<K, V>::keySet()
 {
-	return null;
+	BinaryTree<K> retTree;
+	TreemapNode<K, V>* nodes = tree.toArray();
+	for (int i = 0; i < size(); i++)
+	{
+		K key = nodes[i].getKey();
+		retTree.add(key);
+	}
+	return retTree;
 }
 
 template <class K, class V>

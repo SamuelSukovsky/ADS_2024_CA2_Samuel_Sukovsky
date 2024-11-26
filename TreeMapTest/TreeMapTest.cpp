@@ -10,7 +10,7 @@ namespace TreeMapTest
 	{
 	public:
 		
-		TEST_METHOD(TestNodesEqaul)
+		TEST_METHOD(TestNodesEqual)
 		{
 			TreemapNode<int, int> node1(1, 1);
 			TreemapNode<int, int> node2(1, 0);
@@ -37,7 +37,7 @@ namespace TreeMapTest
 			Assert::IsTrue((node1 < node2));
 		}
 
-		
+
 		TEST_METHOD(TestPutEmpty)
 		{
 			TreeMap<int, int> map;
@@ -47,6 +47,63 @@ namespace TreeMapTest
 			int actual = map.get(1);
 			Assert::AreEqual(1, map.size());
 			Assert::AreEqual(expected, actual);
+		}
+
+		TEST_METHOD(TestClear)
+		{
+			TreeMap<int, int> map;
+			map.put(1, 5);
+			map.put(0, 5);
+			map.put(2, 5);
+			Assert::AreEqual(3, map.size());
+			map.clear();
+			Assert::AreEqual(0, map.size());
+		}
+
+		TEST_METHOD(TestContainsKey)
+		{
+			TreeMap<int, int> map;
+			map.put(1, 5);
+
+			Assert::IsTrue(map.containsKey(1));
+		}
+
+		TEST_METHOD(TestContainsKeyEmpty)
+		{
+			TreeMap<int, int> map;
+
+			Assert::IsFalse(map.containsKey(1));
+		}
+
+		TEST_METHOD(TestGetEmpty)
+		{
+			TreeMap<int, int> map;
+
+			int expected = 0;
+			int actual = map.get(1);
+			Assert::AreEqual(expected, actual);
+		}
+
+		TEST_METHOD(TestKeySet)
+		{
+			TreeMap<int, int> map;
+			map.put(3, 5);
+			map.put(1, 5);
+			map.put(0, 5);
+			map.put(2, 5);
+			map.put(5, 5);
+			map.put(4, 5);
+			map.put(6, 5);
+
+			Assert::AreEqual(7, map.size());
+			Assert::IsTrue(map.containsKey(6));
+
+			BinaryTree<int> keys = map.keySet();
+
+			Assert::AreEqual(7, keys.count());
+			keys.printInOrder();
+			int expected = 1;
+			Assert::AreEqual(1, keys.get(expected));
 		}
 	};
 }

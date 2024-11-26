@@ -164,7 +164,7 @@ T& BinaryTree<T>::get(T& item)
 		else
 			current = current->getRight();
 	}
-	throw logic_error("ITem not found");
+	throw logic_error("Item not found");
 }
 template <class T>
 void BinaryTree<T>::addItemToArray(BSTNode<T>* node, int &pos, T *arr)
