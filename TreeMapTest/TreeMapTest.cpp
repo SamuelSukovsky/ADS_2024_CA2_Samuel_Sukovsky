@@ -82,6 +82,8 @@ namespace TreeMapTest
 			int expected = 0;
 			int actual = map.get(1);
 			Assert::AreEqual(expected, actual);
+			actual = map[1];
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(TestKeySet)
@@ -101,9 +103,45 @@ namespace TreeMapTest
 			BinaryTree<int> keys = map.keySet();
 
 			Assert::AreEqual(7, keys.count());
-			keys.printInOrder();
 			int expected = 1;
 			Assert::AreEqual(1, keys.get(expected));
+		}
+
+		TEST_METHOD(TestRemoveEmpty)
+		{
+			TreeMap<int, int> map;
+
+			Assert::AreEqual(0, map.size());
+			Assert::IsFalse(map.removeKey(1));
+			Assert::AreEqual(0, map.size());
+		}
+
+		TEST_METHOD(TestRemoveLeaf)
+		{
+			TreeMap<int, int> map;
+			map.put(2, 5);
+			map.put(1, 5);
+			map.put(3, 5);
+
+			Assert::AreEqual(3, map.size());
+			Assert::IsTrue(map.removeKey(1));
+			Assert::AreEqual(2, map.size());
+		}
+
+		TEST_METHOD(TestRemoveRoot)
+		{
+			TreeMap<int, int> map;
+			map.put(3, 5);
+			map.put(1, 5);
+			map.put(0, 5);
+			map.put(2, 5);
+			map.put(5, 5);
+			map.put(4, 5);
+			map.put(6, 5);
+
+			Assert::AreEqual(7, map.size());
+			Assert::IsTrue(map.removeKey(3));
+			Assert::AreEqual(6, map.size());
 		}
 	};
 }

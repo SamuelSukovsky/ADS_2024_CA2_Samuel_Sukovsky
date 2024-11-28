@@ -10,12 +10,12 @@ public:
 	TreeMap<K, V>::TreeMap<K, V>();
 	void clear();
 	bool containsKey(K key);
-	V get(K key);
+	V& get(K key);
 	BinaryTree<K> keySet();
 	void put(K key, V value);
 	int size();
 	bool removeKey(K key);
-	//V& operator[K key];
+	V& operator[](K key);
 
 	~TreeMap();
 };
@@ -45,16 +45,17 @@ bool TreeMap<K, V>::containsKey(K key)
 }
 
 template <class K, class V>
-V TreeMap<K, V>::get(K key)
+V& TreeMap<K, V>::get(K key)
 {
 	TreemapNode<K, V> node(key);
+	V ret = V();
 	try
 	{
 		TreemapNode<K, V> retnode = tree.get(node);
-		return retnode.getValue();
+		ret = retnode.getValue();
 	}
 	catch (exception e) {}
-	return V();
+	return ret;
 }
 
 template <class K, class V>
@@ -86,10 +87,17 @@ int TreeMap<K, V>::size()
 template <class K, class V>
 bool TreeMap<K, V>::removeKey(K key)
 {
-	return false;
+	TreemapNode<K, V> node(key);
+	return tree.remove(node);
+}
+
+template <class K, class V>
+V& TreeMap<K,V>::operator[](K key)
+{
+	V ret = get(key);
+	return ret;
 }
 
 template <class K, class V>
 TreeMap<K, V>::~TreeMap()
-{
-}
+{}
