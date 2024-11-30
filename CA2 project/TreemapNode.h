@@ -13,6 +13,7 @@ public:
 	TreemapNode<K, V>(K key, V value);
 	K& getKey();
 	V& getValue();
+	void setValue(V value);
 
 	bool operator<(TreemapNode<K, V>& right);
 	bool operator>(TreemapNode<K, V>& right);
@@ -46,6 +47,9 @@ K& TreemapNode<K, V>::getKey() { return key; }
 
 template <class K, class V>
 V& TreemapNode<K, V>::getValue() { return value; }
+
+template <class K, class V>
+void TreemapNode<K, V>::setValue(V value) { this->value = value; }
 
 
 template <class K, class V>

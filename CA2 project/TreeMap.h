@@ -83,6 +83,11 @@ void TreeMap<K, V>::put(K key, V value)
 		TreemapNode<K, V> node(key, value);
 		tree.add(node);
 	}
+	else
+	{
+		TreemapNode<K, V> node(key);
+		tree.get(node).setValue(value);
+	}
 }
 
 template <class K, class V>
