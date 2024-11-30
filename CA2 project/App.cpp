@@ -48,8 +48,6 @@ int main()
 		cin >> answer;
 		switch (answer[0])
 		{
-			cout << "Enter a letter:" << endl;
-			cin >> answer;
 			case '1':
 			{
 				map.keySet().printInOrder();
