@@ -25,6 +25,7 @@ public:
 	void setLeft(BSTNode<T> *l);
 	void setRight(BSTNode<T> *r);
 	T& getItem();
+	string toString();
 	~BSTNode();
 
 };

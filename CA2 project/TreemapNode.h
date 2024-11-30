@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 using namespace std;
 template <class K, class V>
@@ -10,12 +11,17 @@ public:
 	TreemapNode<K, V>();
 	TreemapNode<K, V>(K key);
 	TreemapNode<K, V>(K key, V value);
-	K getKey();
-	V getValue();
+	K& getKey();
+	V& getValue();
 
 	bool operator<(TreemapNode<K, V>& right);
 	bool operator>(TreemapNode<K, V>& right);
 	bool operator==(TreemapNode<K, V>& right);
+	friend ostream& operator<<(ostream& os, TreemapNode<K, V>& node)
+	{
+		os << node.getKey() << ": " << node.getValue();
+		return os;
+	}
 };
 
 template <class K, class V>
@@ -36,10 +42,11 @@ TreemapNode<K, V>::TreemapNode<K, V>(K key, V value)
 }
 
 template <class K, class V>
-K TreemapNode<K, V>::getKey() { return key; }
+K& TreemapNode<K, V>::getKey() { return key; }
 
 template <class K, class V>
-V TreemapNode<K, V>::getValue() { return value; }
+V& TreemapNode<K, V>::getValue() { return value; }
+
 
 template <class K, class V>
 bool TreemapNode<K, V>::operator<(TreemapNode<K, V>& right)

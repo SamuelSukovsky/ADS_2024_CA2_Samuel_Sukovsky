@@ -49,6 +49,24 @@ namespace TreeMapTest
 			Assert::AreEqual(expected, actual);
 		}
 
+		TEST_METHOD(TestPutExisting)
+		{
+			TreeMap<int, int> map;
+			map.put(1, 5);
+
+			int expected = 5;
+			int actual = map.get(1);
+			Assert::AreEqual(1, map.size());
+			Assert::AreEqual(expected, actual);
+
+			map.put(1, 4);
+
+			expected = 4;
+			actual = map.get(1);
+			Assert::AreEqual(1, map.size());
+			Assert::AreEqual(expected, actual);
+		}
+
 		TEST_METHOD(TestClear)
 		{
 			TreeMap<int, int> map;

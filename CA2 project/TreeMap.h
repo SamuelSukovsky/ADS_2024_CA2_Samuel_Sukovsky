@@ -7,7 +7,7 @@ class TreeMap
 {
 	BinaryTree<TreemapNode<K, V>> tree;
 public:
-	TreeMap<K, V>::TreeMap<K, V>();
+	TreeMap<K, V>();
 	void clear();
 	bool containsKey(K key);
 	V& get(K key);
@@ -18,6 +18,10 @@ public:
 	V& operator[](K key);
 
 	~TreeMap();
+
+	void printInOrder();
+	void printPreOrder();
+	void printPostOrder();
 };
 
 template <class K, class V>
@@ -38,7 +42,7 @@ bool TreeMap<K, V>::containsKey(K key)
 		tree.get(node);
 		return true;
 	}
-	catch (exception e) 
+	catch (logic_error e) 
 	{
 		return false;
 	}
@@ -74,8 +78,11 @@ BinaryTree<K> TreeMap<K, V>::keySet()
 template <class K, class V>
 void TreeMap<K, V>::put(K key, V value)
 {
-	TreemapNode<K, V> node(key, value);
-	tree.add(node);
+	if (!containsKey(key))
+	{
+		TreemapNode<K, V> node(key, value);
+		tree.add(node);
+	}
 }
 
 template <class K, class V>
@@ -98,6 +105,26 @@ V& TreeMap<K,V>::operator[](K key)
 	return ret;
 }
 
+
 template <class K, class V>
 TreeMap<K, V>::~TreeMap()
 {}
+
+
+template <class K, class V>
+void TreeMap<K, V>::printInOrder()
+{
+	tree.printInOrder();
+}
+
+template <class K, class V>
+void TreeMap<K, V>::printPreOrder()
+{
+	tree.printPreOrder();
+}
+
+template <class K, class V>
+void TreeMap<K, V>::printPostOrder()
+{
+	tree.printPostOrder();
+}
