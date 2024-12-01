@@ -44,7 +44,7 @@ int main()
 	string answer;
 	while (running)
 	{
-		cout << "\nEnter:\n1 for a list of letters\n2 for a list of words for select letter\n3 to print the entire map\nother to exit:" << endl;
+		cout << "Enter:\n1 for a list of letters\n2 for a list of words for select letter\n3 to print the entire map\n0 to exit:" << endl;
 		cin >> answer;
 		switch (answer[0])
 		{
@@ -57,7 +57,8 @@ int main()
 			{
 				cout << "Enter a letter:" << endl;
 				cin >> answer;
-				OutputVector<string> vec = map.get(answer[0]);
+				OutputVector<string> vec;
+				vec = map.get(answer[0]);
 				cout << answer[0] << ": " << vec << endl;
 				break;
 			}
@@ -66,10 +67,16 @@ int main()
 				map.printInOrder();
 				break;
 			}
-			default:
+			case '0':
 			{
 				cout << "Exiting application." << endl;
 				running = false;
+				break;
+			}
+			default:
+			{
+				cout << "Invalid input." << endl;
+				break;
 			}
 		}
 	}
