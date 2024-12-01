@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="BSTNode.h" />
+    <ClInclude Include="GameEntry.h" />
     <ClInclude Include="OutputVector.h" />
     <ClInclude Include="TreeMap.h" />
     <ClInclude Include="TreemapNode.h" />
@@ -138,6 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="games_catalogue.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

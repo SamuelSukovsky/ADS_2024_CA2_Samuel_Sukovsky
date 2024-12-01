@@ -6,9 +6,24 @@
 
 using namespace std;
 
+void stageTwo(string filename);
+
 int main()
 {
-	string filename = "data.txt";
+	int run = 1;
+	switch (run)
+	{
+	case 1:
+	{
+		string filename = "data.txt";
+		stageTwo(filename);
+	}
+	}
+	return 0;
+}
+
+void stageTwo(string filename)
+{
 	ifstream fileStream(filename);
 	TreeMap<char, OutputVector<string>> map;
 	string line;
@@ -39,7 +54,7 @@ int main()
 			}
 		}
 	}
-	
+
 	bool running = true;
 	string answer;
 	while (running)
@@ -48,38 +63,36 @@ int main()
 		cin >> answer;
 		switch (answer[0])
 		{
-			case '1':
-			{
-				map.keySet().printInOrder();
-				break;
-			}
-			case '2':
-			{
-				cout << "Enter a letter:" << endl;
-				cin >> answer;
-				OutputVector<string> vec;
-				vec = map.get(answer[0]);
-				cout << answer[0] << ": " << vec << endl;
-				break;
-			}
-			case '3':
-			{
-				map.printInOrder();
-				break;
-			}
-			case '0':
-			{
-				cout << "Exiting application." << endl;
-				running = false;
-				break;
-			}
-			default:
-			{
-				cout << "Invalid input." << endl;
-				break;
-			}
+		case '1':
+		{
+			map.keySet().printInOrder();
+			break;
+		}
+		case '2':
+		{
+			cout << "Enter a letter:" << endl;
+			cin >> answer;
+			OutputVector<string> vec;
+			vec = map.get(answer[0]);
+			cout << answer[0] << ": " << vec << endl;
+			break;
+		}
+		case '3':
+		{
+			map.printInOrder();
+			break;
+		}
+		case '0':
+		{
+			cout << "Exiting application." << endl;
+			running = false;
+			break;
+		}
+		default:
+		{
+			cout << "Invalid input." << endl;
+			break;
+		}
 		}
 	}
-
-	return 0;
 }
