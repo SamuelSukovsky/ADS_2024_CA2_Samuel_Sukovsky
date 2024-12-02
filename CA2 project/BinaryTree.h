@@ -19,6 +19,8 @@ public:
 
 	void printInOrder();
 	void printInOrder(BSTNode<T> *node);
+	void printInOrderPlusCount();
+	void printInOrderPlusCount(BSTNode<T>* node);
 	void printPreOrder();
 	void printPreOrder(BSTNode<T> *node);
 	void printPostOrder();
@@ -218,6 +220,23 @@ void BinaryTree<T>::printInOrder(BSTNode<T> *node)
 		printInOrder(node->getLeft());
 		cout << node->getItem() << endl;
 		printInOrder(node->getRight());
+	}
+}
+
+template<class T>
+void BinaryTree<T>::printInOrderPlusCount()
+{
+	this->printInOrderPlusCount(root);
+	cout << endl;
+}
+template<class T>
+void BinaryTree<T>::printInOrderPlusCount(BSTNode<T>* node)
+{
+	if (node != nullptr)
+	{
+		printInOrderPlusCount(node->getLeft());
+		cout << node->getItem().getKey() << " - " << node->getItem().getValue().size() << endl;
+		printInOrderPlusCount(node->getRight());
 	}
 }
 

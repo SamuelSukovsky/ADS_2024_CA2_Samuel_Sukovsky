@@ -13,6 +13,8 @@ public:
 	void push_back(T item);
 	vector<T>* getVector();
 	bool contains(T item);
+	int size();
+	T at(int i);
 	~OutputVector();
 
 	OutputVector<T> operator=(OutputVector<T> right);
@@ -69,9 +71,21 @@ bool OutputVector<T>::contains(T item)
 }
 
 template <class T>
+int OutputVector<T>::size()
+{
+	return vec->size();
+}
+
+template <class T>
+T OutputVector<T>::at(int i)
+{
+	return vec->at(i);
+}
+
+template <class T>
 OutputVector<T>::~OutputVector()
 {
-	if (*connections == 0)
+	if (*connections < 1)
 		delete vec;
 	connections--;
 }

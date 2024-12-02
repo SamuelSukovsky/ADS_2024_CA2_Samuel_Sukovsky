@@ -20,6 +20,7 @@ public:
 	~TreeMap();
 
 	void printInOrder();
+	void printInOrderPlusCount();
 	void printPreOrder();
 	void printPostOrder();
 };
@@ -120,6 +121,12 @@ template <class K, class V>
 void TreeMap<K, V>::printInOrder()
 {
 	tree.printInOrder();
+}
+
+template <class K, class V>
+void TreeMap<K, V>::printInOrderPlusCount()
+{
+	tree.printInOrderPlusCount();
 }
 
 template <class K, class V>
